@@ -21,9 +21,11 @@ What is included?
 How to use?
 -----
 1. Download the files to a folder on your computer;
-2. Open powershell and navigate to the folder where you downloaded the files (i.e. ```cd C:\temp\AS2Latency\```);
-3. Execute LatencyReport.ps1 ```.\LatencyReport.ps1```;
+2. Open powershell and navigate to the folder where you downloaded the files (i.e. ```cd C:\temp\AS2Latency\```) - Make SURE you are in the folder where the files are located;
+3. Execute LatencyReport.ps1 ```powershell.exe -NoLogo -ExecutionPolicy bypass -NoProfile -File .\LatencyReport.ps1```;
 4. Files will be saved in the same folder location as LatencyReport(date).txt and LatencyReport(date).html
+
+*As this is a downloaded script, you may see a security warning before running it*
 
 Which regions will it test?
 -----
