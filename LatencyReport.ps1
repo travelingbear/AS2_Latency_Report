@@ -21,7 +21,7 @@ echo "<th>Rating</th>" >> Latency_Report_$(get-date -f yy-MM-dd).html
 echo "<th>Recommendation</th>" >> Latency_Report_$(get-date -f yy-MM-dd).html
 echo "</tr>" >> Latency_Report_$(get-date -f yy-MM-dd).html
 echo "</trhead>" >> Latency_Report_$(get-date -f yy-MM-dd).html
-echo "<tbody>"
+echo "<tbody>" >> Latency_Report_$(get-date -f yy-MM-dd).html
 
 #Start reading the endpoints and FOREACH endpoint, it will 'tcping' it > extract the average > output to Latency_Report(date).txt and Latency_Report(date).html
 
