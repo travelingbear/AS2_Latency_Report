@@ -1,4 +1,4 @@
-﻿#CheckLatency.ps1
+#CheckLatency.ps1
 
 #This powershell script uses the excellent TCPING.EXE (https://elifulkerson.com/projects/tcping.php) 
 #to send probes using TCP on port 443 to the AppStream endpoints and calculate which endpoint is better
@@ -96,6 +96,13 @@ echo "</tr>" >> Latency_Report_$(get-date -f yy-MM-dd).html
 #Closes the HTML file
 echo '</tbody></table></body></html>' >> Latency_Report_$(get-date -f yy-MM-dd).html
 
-echo "I have finished generating the reports:"
-echo "- $(pwd | select -ExpandProperty Path)\Latency_Report_$(get-date -f yy-MM-dd).html"
-echo "- $(pwd | select -ExpandProperty Path)\Latency_Report_$(get-date -f yy-MM-dd).txt"
+$html_report=$(pwd | select -ExpandProperty Path)+"\Latency_Report_$(get-date -f yy-MM-dd).html"
+$txt_report=$(pwd | select -ExpandProperty Path)+"\Latency_Report_$(get-date -f yy-MM-dd).txt"
+
+if ( (Test-Path -Path $html_report) -and (Test-Path -Path $txt_report) ) {
+	echo "`nI have finished generating the reports as:`n"
+	echo "- $html_report"
+	echo "- $txt_report `n"
+} else {
+	echo "There was a problem generating the reports."	
+}
