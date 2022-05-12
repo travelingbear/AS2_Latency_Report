@@ -95,3 +95,7 @@ echo "</tr>" >> Latency_Report_$(get-date -f yy-MM-dd).html
 
 #Closes the HTML file
 echo '</tbody></table></body></html>' >> Latency_Report_$(get-date -f yy-MM-dd).html
+
+echo "I have finished generating the reports:"
+echo "- $(pwd | select -ExpandProperty Path)\Latency_Report_$(get-date -f yy-MM-dd).html"
+echo "- $(pwd | select -ExpandProperty Path)\Latency_Report_$(get-date -f yy-MM-dd).txt"
