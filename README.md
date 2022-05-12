@@ -27,6 +27,47 @@ How to use?
 
 *As this is a downloaded script, you may see a security warning before running it*
 
+What is the expected output?
+----
+
+If everything goes right, you should see this:
+```
+Generating report. This may take some minutes...
+
+I have finished generating the reports as:
+
+- D:\Users\MY_USER\Desktop\AppStream\LatencyTest\Latency_Report_22-05-12.html
+- D:\Users\MY_USER\Desktop\AppStream\LatencyTest\Latency_Report_22-05-12.txt
+
+```
+
+The text file should look like this:
+```
+## Probing latency for appstream2.us-east-1.amazonaws.com ##
+
+Probing 52.94.228.236:443/tcp - Port is open - time=69.752ms 
+Probing 52.94.228.236:443/tcp - Port is open - time=70.650ms 
+Probing 52.94.228.236:443/tcp - Port is open - time=71.492ms 
+Probing 52.94.228.236:443/tcp - Port is open - time=70.133ms 
+
+Ping statistics for 52.94.228.236:443
+     4 probes sent. 
+     4 successful, 0 failed.  (0.00% fail)
+Approximate trip times in milli-seconds:
+     Minimum = 69.752ms, Maximum = 71.492ms, Average = 70.507ms
+
+
+##################################################
+
+  Latency is GOOD - Recommended Workload: Graphics applications  
+
+##################################################
+```
+
+And the HTML page, should look like this:
+![ReportsPage](https://dtqryi1d1tj5j.cloudfront.net/AS2LatencyTable.PNG)
+
+
 Which regions will it test?
 -----
 Just the public (non-FIPS and non-GovCloud) regions:
