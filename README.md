@@ -12,11 +12,17 @@ This powershell script uses the excellent TCPING.EXE (https://elifulkerson.com/p
 
 It generates a text and an HTML file in the folder it's located.
 
+What is included?
+----
+ - endpoints.txt - This is where the script will look for the endpoints
+ - tcping.exe - This is what is used to send TCP probes to the endpoints on port 443
+ - LatencyReport.ps1 - The script that generates the files for you
+
 How to use?
 -----
 1. Download the files to a folder on your computer;
-2. Open powershell and navigate to the folder where you downloaded the files (i.e. cd C:\temp\AS2Latency\);
-3. Execute LatencyReport.ps1;
+2. Open powershell and navigate to the folder where you downloaded the files (i.e. ```cd C:\temp\AS2Latency\```);
+3. Execute LatencyReport.ps1 ```.\LatencyReport.ps1```;
 4. Files will be saved in the same folder location as LatencyReport(date).txt and LatencyReport(date).html
 
 Which regions will it test?
