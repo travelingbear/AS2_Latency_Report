@@ -103,7 +103,7 @@ if ( (Test-Path -Path $html_report) -and (Test-Path -Path $txt_report) ) {
 	echo "`nI have finished generating the reports as:`n"
 	echo "- $html_report"
 	echo "- $txt_report `n"
-	browser $html_report
+	Start-Process $html_report
 	notepad $txt_report
 } else {
 	echo "There was a problem generating the reports."	
