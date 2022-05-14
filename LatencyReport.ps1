@@ -23,7 +23,7 @@ echo "</tr>" >> Latency_Report_$(get-date -f yy-MM-dd).html
 echo "</trhead>" >> Latency_Report_$(get-date -f yy-MM-dd).html
 echo "<tbody>" >> Latency_Report_$(get-date -f yy-MM-dd).html
 
-echo "Generating report. This may take some minutes..."
+echo "Generating report..."
 
 #Start reading the endpoints and FOREACH endpoint, it will 'tcping' it > extract the average > output to Latency_Report(date).txt and Latency_Report(date).html
 
@@ -32,7 +32,7 @@ Get-Content .\endpoints.txt | foreach {
 #html
 echo "<tr><td>$_</td>" >> Latency_Report_$(get-date -f yy-MM-dd).html
 #txt
-echo "`n## Probing latency for $_ ##";.\tcping.exe $_ 443; 
+echo "`n## Probing latency for $_ ##";.\tcping.exe -i 0.2 -n 3 $_ 443; 
 
 #gets the result > split to find the average > format the average to get the value
 $average = (.\tcping.exe $_ 443 | findstr Average).Split(",")| Select-String -Pattern '\bAverage = ' | ConvertFrom-StringData | Select -ExpandProperty Values
