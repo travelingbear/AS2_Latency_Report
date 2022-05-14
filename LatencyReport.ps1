@@ -29,13 +29,15 @@ echo "Generating report..."
 
 Get-Content .\endpoints.txt | foreach {
 
+$endpoint_latency=$(.\tcping.exe -i 0.2 -n 3 $_ 443)
+
 #html
 echo "<tr><td>$_</td>" >> Latency_Report_$(get-date -f yy-MM-dd).html
 #txt
-echo "`n## Probing latency for $_ ##";.\tcping.exe -i 0.2 -n 3 $_ 443; 
+echo "`n## Probing latency for $_ ##"; echo $endpoint_latency
 
 #gets the result > split to find the average > format the average to get the value
-$average = (.\tcping.exe $_ 443 | findstr Average).Split(",")| Select-String -Pattern '\bAverage = ' | ConvertFrom-StringData | Select -ExpandProperty Values
+$average = ($endpoint_latency | findstr Average).Split(",")| Select-String -Pattern '\bAverage = ' | ConvertFrom-StringData | Select -ExpandProperty Values
 
 ##Creates the suggestions based on the AVERAGE for each endpoint
 
@@ -91,7 +93,7 @@ echo "`n----------------------------------------------------------------`n"
 
 #html
 echo "</tr>" >> Latency_Report_$(get-date -f yy-MM-dd).html
-} | Out-File .\Latency_Report_$(get-date -f yy-MM-dd).txt -Append #save the output of the command to the TXT file
+} | Out-File .\Latency_Report_$(get-date -f yy-MM-dd).txt #save the output of the command to the TXT file
 
 #Closes the HTML file
 echo '</tbody></table></body></html>' >> Latency_Report_$(get-date -f yy-MM-dd).html
@@ -104,7 +106,6 @@ if ( (Test-Path -Path $html_report) -and (Test-Path -Path $txt_report) ) {
 	echo "- $html_report"
 	echo "- $txt_report `n"
 	Start-Process $html_report
-	notepad $txt_report
 } else {
 	echo "There was a problem generating the reports."	
 }
