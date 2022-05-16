@@ -64,7 +64,7 @@ Approximate trip times in milli-seconds:
 ##################################################
 ```
 
-And the HTML page, should look like this:
+And the HTML page should look like this:
 ![ReportsPage](https://dtqryi1d1tj5j.cloudfront.net/AS2LatencyTable.PNG)
 
 
